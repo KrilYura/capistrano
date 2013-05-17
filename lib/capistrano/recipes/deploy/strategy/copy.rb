@@ -319,6 +319,11 @@ module Capistrano
             compression.decompress_command + [file]
           end
 
+          def decompress_remote_file
+            p 'qwe'
+            run "cd #{configuration[:releases_path]} && #{decompress(remote_filename).join(" ")}"
+          end
+
           # Distributes the file to the remote servers
           def distribute!
             args = [filename, remote_filename]
